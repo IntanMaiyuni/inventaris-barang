@@ -9,7 +9,6 @@ use App\Http\Controllers\UserDashboardController;
 use App\Http\Controllers\UserCategoryController;
 use App\Http\Controllers\UserProductController;
 use App\Http\Controllers\UserSupplierController;
-use App\Http\Controllers\TailwindDashboardController;
 /*
 |--------------------------------------------------------------------------
 | Landing Page
@@ -42,10 +41,10 @@ require __DIR__ . '/auth.php';
 */
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
 
-        // Dashboard Tailwind
-         Route::get('/dashboard', [TailwindDashboardController::class, 'index'])
-            ->name('admin.dashboard');
-        
+    // Dashboard Admin
+    Route::get('/dashboard', [DashboardController::class, 'index'])
+        ->name('admin.dashboard');
+
     // CRUD Data Master
     Route::resource('categories', CategoryController::class);
     Route::resource('products', ProductController::class);
